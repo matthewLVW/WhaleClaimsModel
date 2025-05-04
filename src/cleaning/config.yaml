@@ -1,0 +1,35 @@
+# ---- column groups ------------
+date_cols:
+  start:  Date_start_contract
+  last:   Date_last_renewal
+  next:   Date_next_renewal
+  birth:  Date_birth
+  licence: Date_driving_licence
+  lapse:  Date_lapse
+
+numeric_cols:
+  skew_log:
+    # Premium and other features, but **no** Cost_claims_year
+    - Premium
+    - Value_vehicle
+    - N_claims_year
+    - N_claims_history
+    - Policies_in_force
+    - Max_policies
+    - Max_products
+    - R_Claims_history
+    - Lapse
+  standard: [Length, Weight, Power, Cylinder_capacity]
+
+categorical_cols:
+  binary: [Distribution_channel, Payment, Area, Second_driver]
+  onehot: [Type_risk, Type_fuel]
+
+# ---- winsorization ------------
+winsor:
+  high_quantile: 0.999
+  low_quantile: 0.001
+
+# ---- VIF / correlation  -------
+vif_threshold: 10
+corr_threshold: 0.95
